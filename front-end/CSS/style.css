@@ -4,17 +4,18 @@
   }
   html, body {
     height: 100%;
+    width: 100%;
   }
-  section {
+  main {
     min-height: 100%;
     /* equal to footer height */
-    margin-bottom: -142px; 
+    margin-bottom: -75px; 
   }
-  section:after {
+  main:after {
     content: "";
     display: block;
   }
-  .footer-link, section:after {
+  .footer-link, main:after {
     height: 75px; 
   }
 
@@ -25,7 +26,12 @@
 
   h1 {
       color:rgb(155, 44, 146);
+      text-align: center;
   }
+
+a {
+    padding-bottom: 20px;
+}
   .bg-color {
     background: rgb(232,77,176);
     background: linear-gradient(90deg, rgba(232,77,176,1) 0%, rgba(194,67,218,1) 48%, rgba(255,0,151,1) 100%);
@@ -70,3 +76,35 @@
     padding-left:40px;
     padding-bottom: 20px;
 }
+
+.articles {
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    flex-wrap: wrap;
+}
+
+img{
+    object-fit: cover;
+    height : 450px;
+    width: 100%;
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+#articles {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.card{
+    margin-right: 50px;
+    margin-bottom: 50px;
+    background-color: rgb(194, 161, 194);
+}
+
