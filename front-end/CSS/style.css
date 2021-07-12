@@ -108,3 +108,8 @@ img{
     background-color: rgb(194, 161, 194);
 }
 
+#single-card {
+    display: flex;
+    justify-content: center;
+}
+
