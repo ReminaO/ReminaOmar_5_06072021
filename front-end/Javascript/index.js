@@ -2,7 +2,7 @@ let teddyData = [];
 let teddyColor = [];
 let teddyLink = document.getElementById('select-link');
 let teddyCard = document.getElementById("single-card");
-const button = document.getElementById('add-btn');
+;
 
 
 
@@ -29,7 +29,7 @@ const teddyDisplay = async () => {
             <div class="card-body">
                 <h5 class="card-title" >${teddy.name}</h5>
                 <p class="card-text" >${teddy.description}</p>
-                <p class="card-prix" >${teddy.price} €</p>
+                <p class="card-prix" >${teddy.price / 100} €</p>
                 <a href="./product.html?id=${teddy._id}" id="select-link" class="stretched-link">Voir le produit</a>
             </div>
         </div>
