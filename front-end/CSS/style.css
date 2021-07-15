@@ -76,7 +76,7 @@ a {
     padding-left:40px;
     padding-bottom: 20px;
 }
-
+/*Style page d'accueil*/
 .articles {
     display: flex;
     flex-direction: row;
@@ -90,6 +90,7 @@ img{
     object-fit: cover;
     height : 450px;
     width: 100%;
+    padding-top: 15px;
 }
 .card-body {
     display: flex;
@@ -100,6 +101,7 @@ img{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    
 }
 
 .card{
@@ -112,4 +114,133 @@ img{
     display: flex;
     justify-content: center;
 }
+.scale:hover {
+    transform: scale(1.03);
+    transition: 0.5s ease;
+}
 
+.scale:active {
+    transform: scale(0.98);
+    transition: 0.5s;
+}
+
+#add-btn {
+    border-radius: 30px;
+    background: linear-gradient(90deg, rgba(232,77,176,1) 0%, rgba(194,67,218,1) 48%, rgba(255,0,151,1) 100%);
+    color: white;
+}
+
+#add-btn:hover {
+    transform: scale(1.01);
+    transition: 0.5s;
+}
+
+#add-btn:active {
+    transform: scale(0.98);
+    transition: 0.5s;
+}
+
+.card-prix{
+    font-weight: bold;
+}
+
+.card-title{
+    font-family:cursive;
+    padding-top: 10px;
+}
+/*Style page du panier*/
+.product-container{
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin:0 auto;
+    margin-top: 50px;
+}
+
+.product-header {
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 auto;
+}
+
+.product-title {
+width: 30%;
+display: flex;
+align-items: center;
+justify-content: center;
+border-bottom: rgb(155, 44, 146) 4px solid;
+}
+
+.price {
+    width : 15%;
+    display: flex;
+    align-items: center;
+    border-bottom: rgb(155, 44, 146) 4px solid;
+}
+
+.total {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    border-bottom: rgb(155, 44, 146) 4px solid;
+}
+
+.cart-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.quantity {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    border-bottom: rgb(155, 44, 146) 4px solid;
+}
+
+.color{
+    width : 15%;
+    display: flex;
+    align-items: center;
+    border-bottom: rgb(155, 44, 146) 4px solid;
+}
+.color-choice {
+    width : 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.basketTotalContainer{
+    display:flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.basketTotalTitle{
+    width: 30%;
+}
+
+.basketTotal {
+    width : 10%;
+}
+
+.product {
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: rgb(155, 44, 146) 4px solid;
+
+}
