@@ -92,9 +92,7 @@ const singleTeddy = async () => {
 
         const popupConfirmation = () => {
             if (window.confirm(`
-        L'article ${itemId.name},
-        couleur : ${formSelect}
-        a bien été ajouté à votre panier.
+        L'article ${itemId.name}, couleur : ${formSelect} a bien été ajouté à votre panier.
         Pour consulter le panier cliquez sur OK, pour revenir sur la page d'accueil cliquez sur ANNULER`)) {
                 window.location.href = "cart.html";
             } else {
