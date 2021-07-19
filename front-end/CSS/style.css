@@ -206,17 +206,19 @@ border-bottom: rgb(155, 44, 146) 4px solid;
     display: flex;
     align-items: center;
     border-bottom: rgb(155, 44, 146) 4px solid;
+    flex-wrap: wrap;
 }
 .color-choice {
-    width : 10%;
+    width : 15%;
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 .product img {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 70px;
     object-fit: cover;
 }
 
@@ -228,11 +230,11 @@ border-bottom: rgb(155, 44, 146) 4px solid;
 }
 
 .basketTotalTitle{
-    width: 30%;
+    width: 45%;
 }
 
 .basketTotal {
-    width : 10%;
+    width : 15%;
 }
 
 .product {
@@ -242,5 +244,75 @@ border-bottom: rgb(155, 44, 146) 4px solid;
     align-items: center;
     padding: 10px 0;
     border-bottom: rgb(155, 44, 146) 4px solid;
+}
 
+.product a {
+    position: relative;
+    top : 15%;
+}
+
+/*Formulaire*/
+.form-container {
+    max-width: 850px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border :  rgb(155, 44, 146) 2px solid;
+    padding: 10px;
+    border-radius: 30px;
+}
+.form-intro {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-bottom: 20px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.form-input__label {
+    display: flex;
+    justify-content: flex-start;
+    margin : 10px;
+}
+.form-input {
+    display: flex;
+    flex-direction: column;
+}
+Label {
+    padding-right : 10px;
+    padding-left: 10px;
+    padding-bottom : 20px;
+}
+ input {
+    border-radius: 30px;
+    border: rgb(155, 44, 146) 1px solid;
+    width : 300px;
+    height : 35px;
+ }
+
+ textarea {
+    border-radius: 30px;
+    border: rgb(155, 44, 146) 1px solid;
+    width : 300px;
+    height : 100px;
+ }
+
+#send-btn {
+    background: linear-gradient(90deg, rgba(232,77,176,1) 0%, rgba(194,67,218,1) 48%, rgba(255,0,151,1) 100%);
+    border-radius: 30px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 35px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    left: 27%;
+}
+
+#send-btn:hover {
+    background: linear-gradient(90deg, rgba(255,0,151,1) 0%, rgba(232,77,176,1) 48%, rgba(194,67,218,1) 100%);
 }

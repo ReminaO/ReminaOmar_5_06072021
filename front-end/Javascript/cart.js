@@ -29,7 +29,7 @@ if (storageItem === null || storageItem == 0) {
         cartStructure = cartStructure + `
         <div class="product">
             <a href="#"  class="cart-delete"><i class="far fa-trash-alt"></i></a>
-            <img src="${storageItem[k].imageSelect} alt="Photo de ${storageItem[k].selectName}">
+            <img src="${storageItem[k].imageSelect}" alt="Photo de ${storageItem[k].selectName}">
             <span> ${storageItem[k].selectName}</span>
             <span class="color-choice"> ${storageItem[k].option}</span>
         </div>
@@ -42,8 +42,8 @@ if (storageItem === null || storageItem == 0) {
         cartContainer.innerHTML = cartStructure;
         cartContainer.innerHTML += `
         <div class="basketTotalContainer">
-            <h4 class="basketTotalBasketTitle">Total =  </h4>
-            <h4 class="basketTotal"> ${totalCart} €</h4>
+            <h4 class="basketTotalBasketTitle">Total</h4>
+            <h4 class="basketTotal"> = ${totalCart} €</h4>
         </div>
         `;
     }
