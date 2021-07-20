@@ -292,6 +292,10 @@ Label {
     height : 35px;
  }
 
+#postal-code {
+    width: 150px;
+}
+
  textarea {
     border-radius: 30px;
     border: rgb(155, 44, 146) 1px solid;

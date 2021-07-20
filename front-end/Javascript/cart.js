@@ -22,7 +22,7 @@ if (storageItem === null || storageItem == 0) {
     <div> Le panier est vide</div>
     </div> 
     `;
-    cartContainer.innerHTML += emptyCart;
+    cartContainer.insertAdjacentHTML("afterbegin", emptyCart);
 } else {
     
     for (k = 0; k < storageItem.length; k++) {
@@ -85,19 +85,30 @@ sendBtn.addEventListener("click", (e) => {
         postalCode: document.getElementById("postal-code").value
     }
 
-//---RegEx pour les champs textes
+    //---RegEx pour les champs textes
     
     const textCheck = (value) => {
-        return /^[A-Za-z]{2,20}$/.test(value);
-    }
+        return /^([A-Za-z]{2,20})?([-]{0,1})?([A-Za-z]{2,20})$/.test(value);
+    };
 
     //---RegEx pour le champs code postal
     
     const postalCheck = (value) => {
         return /^[0-9]{5}$/.test(value);
-    }
+    };
 
-//---Controle de l'input Prénom
+    //---RegEx pour le champs email
+    
+    const emailCheck = (value) => {
+        return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
+    };
+    //---RegEx pour le champs adresse
+    
+    const addressCheck = (value) => {
+        return /^[A-Za-z0-9\s]{5,100}$/.test(value);
+    };
+
+    //---Controle de l'input Prénom
     
     const firstNameCheck = () => {
 
@@ -111,9 +122,9 @@ sendBtn.addEventListener("click", (e) => {
             alert("les chiffres et symboles ne sont pas acceptés dans le champs Prénom");
             return false;
         };
-    }
+    };
 
-//---Controle de l'input Nom
+    //---Controle de l'input Nom
     
     const lastNameCheck = () => {
 
@@ -125,7 +136,7 @@ sendBtn.addEventListener("click", (e) => {
             alert("les chiffres et symboles ne sont pas acceptés dans le champs Nom");
             return false;
         };
-    }
+    };
 
     //---Controle de l'input Ville
     
@@ -139,7 +150,7 @@ sendBtn.addEventListener("click", (e) => {
             alert("les chiffres et symboles ne sont pas acceptés dans le champs Ville");
             return false;
         };
-    }
+    };
 
     //---Controle de l'input Code Postal
     
@@ -153,20 +164,86 @@ sendBtn.addEventListener("click", (e) => {
             alert("Le code Postal doit être composé de 5 chiffres");
             return false;
         };
-    }
+    };
 
-//---Controle validité du formulaire avant envoie dans le localStorage
+    //---Controle de l'input email
     
-    if (firstNameCheck() && lastNameCheck() && cityCheck() && postalCodeCheck()) {
+    const mailCheck = () => {
+
+        const theMail = formValues.email;
+
+        if (emailCheck(theMail)) {
+            return true;
+        } else {
+            alert("L'email n'est pas valide");
+            return false;
+        };
+    };
+    
+    //---Controle de l'input email
+    
+    const addressesCheck = () => {
+
+        const theAddress = formValues.address;
+
+        if (addressCheck(theAddress)) {
+            return true;
+        } else {
+            alert("L'adresse n'est pas valide");
+            return false;
+        };
+    };
+    
+    //---Controle validité du formulaire avant envoie dans le localStorage
+    
+    if (firstNameCheck() && lastNameCheck() && cityCheck() && postalCodeCheck() && mailCheck() && addressesCheck() && cartContainer!==null && cartContainer!==0 ) {
         localStorage.setItem("formValues", JSON.stringify(formValues));
+        localStorage.setItem("totalCart", JSON.stringify(totalCart))
+        
+//---Mettre les valeurs du formulaires et des produits selectionnés dans un objet a envoyer au serveur
+        
+        const toSend = {
+            storageItem,
+            formValues,
+            totalCart,
+        };
+
+//---Envoie de l'objet vers le serveur
+    
+        const postSend = fetch("http://localhost:3000/api/teddies/order", {
+            method: "POST",
+            body: JSON.stringify(toSend),
+            headers: {
+                "Content-type": "application/json",
+            },
+        });
+
+        //---Pour voir le resultat dans la console
+        postSend.then(async (response) => {
+            try {
+                const content = await response.json();
+                console.log(content);
+
+                if (response.ok) {
+            
+                    //---Récupération de l'id dans le local Storage
+
+                    localStorage.setItem("orderId", content._id);
+
+                    //---Redirection vers la page validation
+
+                    window.location.href = "validation.html";
+
+                } else {
+                    alert(`Réponse du serveur: erreur ${response.status}`)
+                };
+
+            } catch (e) {
+                alert(`Erreur: ${e}`);
+            };
+        });
+
     } else {
         alert("Merci de compléter correctement le formulaire");
     };
-    
-
-   /* const toSend = {
-        storageItem,
-        formValues
-    }*/
-}
-)
+});
