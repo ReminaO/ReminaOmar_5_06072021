@@ -1,8 +1,4 @@
 let teddyData = [];
-let teddyColor = [];
-let teddyLink = document.getElementById('select-link');
-let teddyCard = document.getElementById("single-card");
-;
 
 
 

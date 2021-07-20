@@ -1,5 +1,4 @@
 let teddyId = [];
-const colorSelect = document.getElementById("color-select");
 
 
 
@@ -102,18 +101,18 @@ const singleTeddy = async () => {
 
         //---Enregistrement de l'Item dans le local Storage
 
-        let storageItem = JSON.parse(localStorage.getItem("product"));
+        let products = JSON.parse(localStorage.getItem("products"));
 
         const addStorage = () => {
-            storageItem.push(productSelect);
-            localStorage.setItem(("product"), JSON.stringify(storageItem));
+            products.push(productSelect);
+            localStorage.setItem(("products"), JSON.stringify(products));
         }
 
-        if (storageItem) {
+        if (products) {
             addStorage();
             popupConfirmation();
         } else {
-            storageItem = [];
+            products = [];
             addStorage();
             popupConfirmation();
         }

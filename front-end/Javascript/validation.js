@@ -1,11 +1,12 @@
 //---Récupération de l'Id de la commande
 
 const orderId = localStorage.getItem("orderId");
+console.log(orderId);
 
 //---Récupération du prix total de la commande
 
 const totalCart = localstorage.getItem("totalCart");
-
+console.log(totalCart);
 //---Structure de la page de validation
 
 const validationPage = getElementById("order-validation");
@@ -16,6 +17,7 @@ const validationContainer = `
         <p>Merci pour votre commande</p>
         <p>Votre commande numéro <span class="bold">${orderId}</span> a bien été prise en compte</p>
         <p>Le montant de votre commande est de <span class="bold">${totalCart}</span> € </p>
+        <p>A bientôt ! <p>
     </div>
 `
 validationPage.insertAdjacentHTML("afterbegin", validationContainer);
@@ -27,7 +29,8 @@ const storageClean = (key) => {
 }
 storageClean("orderId");
 storageClean("totalCart");
-storageClean("formValues");
+storageClean("contact");
+storageClean("product");
 
 if (orderId == null || totalCart == null) {
     window.location.href = "index.html";

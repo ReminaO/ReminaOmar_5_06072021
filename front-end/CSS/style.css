@@ -133,6 +133,7 @@ img{
 #add-btn:hover {
     transform: scale(1.01);
     transition: 0.5s;
+    background: linear-gradient(90deg, rgba(255,0,151,1) 0%, rgba(232,77,176,1) 48%, rgba(194,67,218,1) 100%);
 }
 
 #add-btn:active {
@@ -312,6 +313,7 @@ Label {
     border: rgb(155, 44, 146) 1px solid;
     width : 300px;
     height : 100px;
+    padding: 10px;
  }
 
 #send-btn {
@@ -330,4 +332,11 @@ Label {
 
 #send-btn:hover {
     background: linear-gradient(90deg, rgba(255,0,151,1) 0%, rgba(232,77,176,1) 48%, rgba(194,67,218,1) 100%);
+    transform: scale(1.01);
+    transition: 0.5s;
+}
+
+#send-btn:active {
+    transform: scale(0.98);
+    transition: 0.5s;
 }

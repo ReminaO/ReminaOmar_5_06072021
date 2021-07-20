@@ -1,13 +1,13 @@
 
 
-let storageItem = JSON.parse(localStorage.getItem("product"));
+let products = JSON.parse(localStorage.getItem("products"));
 let cartStructure = [];
 let totalPrice = [];
 
 //---Vérification du contenu du panier si vide
 
 const emptyBasket = () => {
-    if (storageItem == null || storageItem == 0) {
+    if  (products == null || products == 0) {
         return true;
     } else {
         return false;
@@ -15,8 +15,8 @@ const emptyBasket = () => {
 };
 
 if (emptyBasket() == false) {
-    for (let l = 0; l < storageItem.length; l++){
-        let cartPrice = storageItem[l].priceSelect * storageItem[l].quantity;
+    for (let l = 0; l < products.length; l++){
+        let cartPrice = products[l].priceSelect * products[l].quantity;
         totalPrice.push(cartPrice);
     };
 };
@@ -30,7 +30,7 @@ const totalCart = totalPrice.reduce(reducer, 0);
 //---Affichage du produit dans le panier
 
 const cartContainer = document.querySelector(".cart-container");
-if (storageItem === null || storageItem == 0) {
+if  (products === null || products == 0) {
     const emptyCart = `
     <div class="empty-cart">
     <div> Le panier est vide</div>
@@ -39,20 +39,20 @@ if (storageItem === null || storageItem == 0) {
     cartContainer.insertAdjacentHTML("afterbegin", emptyCart);
 } else {
     
-    for (k = 0; k < storageItem.length; k++) {
+    for (k = 0; k < products.length; k++) {
         cartStructure = cartStructure + `
-        <div class="product">
-            <a href="#"  class="cart-delete"><i class="far fa-trash-alt"></i></a>
-            <img src="${storageItem[k].imageSelect}" alt="Photo de ${storageItem[k].selectName}">
-            <span> ${storageItem[k].selectName}</span>
-            <span class="color-choice"> ${storageItem[k].option}</span>
+        <div class= "product">
+            <a href="#" class="cart-delete"><i class="far fa-trash-alt"></i></a>
+            <img src="${products[k].imageSelect}" alt="Photo de ${products[k].selectName}">
+            <span> ${products[k].selectName}</span>
+            <span class="color-choice"> ${products[k].option}</span>
         </div>
-        <div class="price">${storageItem[k].priceSelect} €</div>
-        <div class="quantity">${storageItem[k].quantity}</div>
-        <div class="total">${storageItem[k].quantity * storageItem[k].priceSelect} € </div>
+        <div class="price">${products[k].priceSelect} €</div>
+        <div class="quantity">${products[k].quantity}</div>
+        <div class="total">${products[k].quantity * products[k].priceSelect} € </div>
         `;
     }
-    if (k === storageItem.length) {
+    if (k ===products.length) {
         cartContainer.innerHTML = cartStructure;
         cartContainer.innerHTML += `
         <div class="basketTotalContainer">
@@ -71,23 +71,24 @@ for (let j = 0; j < cartDelete.length; j++) {
 
         // Selection de l'Id du produit
 
-        let idDelete = storageItem[j].idSelect;
+        let idDelete =  products[j].idSelect;
 
         //---Utilisattion de la methode filter pour supprimer l'item
-        storageItem = storageItem.filter(el => el.idSelect !== idDelete);
+        products =  products.filter(el => el.idSelect !== idDelete);
 
-        localStorage.setItem("product", JSON.stringify(storageItem));
+        localStorage.setItem("products", JSON.stringify(products));
 
         alert("Cet article a été supprimé du panier");
         window.location.href = "cart.html";
 
     })
 }
-//-------------------------------------
+//---Vérification du panier avant envoi de la commande
 
 if (emptyBasket() == false) {
     
-
+//---Affichage du formulaire sur la page du panier
+    
     const formDisplay = () => {
         const formContainer = document.querySelector("#form-container")
         const formContent = `
@@ -130,12 +131,13 @@ if (emptyBasket() == false) {
     formDisplay();
 
     //---Enregitrer le formulaire dans le local Storage
+
     const sendBtn = document.getElementById("send-btn");
 
     sendBtn.addEventListener("click", (e) => {
         e.preventDefault();
 
-        const formValues = {
+        const contact = {
             firstName: document.getElementById("first-name").value,
             lastName: document.getElementById("last-name").value,
             email: document.getElementById("email").value,
@@ -171,7 +173,7 @@ if (emptyBasket() == false) {
         
         const firstNameCheck = () => {
 
-            const theFirstName = formValues.firstName;
+            const theFirstName = contact.firstName;
 
             if (textCheck(theFirstName)) {
                 return true;
@@ -185,7 +187,7 @@ if (emptyBasket() == false) {
         
         const lastNameCheck = () => {
 
-            const theLastName = formValues.lastName;
+            const theLastName = contact.lastName;
 
             if (textCheck(theLastName)) {
                 return true;
@@ -199,7 +201,7 @@ if (emptyBasket() == false) {
         
         const cityCheck = () => {
 
-            const theCity = formValues.city;
+            const theCity = contact.city;
 
             if (textCheck(theCity)) {
                 return true;
@@ -213,7 +215,7 @@ if (emptyBasket() == false) {
         
         const postalCodeCheck = () => {
 
-            const thePostalCode = formValues.postalCode;
+            const thePostalCode = contact.postalCode;
 
             if (postalCheck(thePostalCode)) {
                 return true;
@@ -227,7 +229,7 @@ if (emptyBasket() == false) {
         
         const mailCheck = () => {
 
-            const theMail = formValues.email;
+            const theMail = contact.email;
 
             if (emailCheck(theMail)) {
                 return true;
@@ -241,7 +243,7 @@ if (emptyBasket() == false) {
         
         const addressesCheck = () => {
 
-            const theAddress = formValues.address;
+            const theAddress = contact.address;
 
             if (addressCheck(theAddress)) {
                 return true;
@@ -254,14 +256,14 @@ if (emptyBasket() == false) {
         //---Controle validité du formulaire avant envoie dans le localStorage
         
         if (firstNameCheck() && lastNameCheck() && cityCheck() && postalCodeCheck() && mailCheck() && addressesCheck()) {
-            localStorage.setItem("formValues", JSON.stringify(formValues));
+            localStorage.setItem("contact", JSON.stringify(contact));
             localStorage.setItem("totalCart", JSON.stringify(totalCart));
             
     //---Mettre les valeurs du formulaires et des produits selectionnés dans un objet a envoyer au serveur
             
             const toSend = {
-                storageItem,
-                formValues,
+                products,
+                contact,
                 totalCart,
             };
 
@@ -302,7 +304,7 @@ if (emptyBasket() == false) {
             });
 
         } else {
-            alert("Merci de compléter correctement le formulaire ou d'ajouter des articles dans le panier");
+            alert("Merci de compléter correctement le formulaire");
         };
     });
     
