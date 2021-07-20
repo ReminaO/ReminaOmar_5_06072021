@@ -252,7 +252,7 @@ border-bottom: rgb(155, 44, 146) 4px solid;
 }
 
 /*Formulaire*/
-.form-container {
+#form-container {
     max-width: 850px;
     display: flex;
     flex-direction: column;
@@ -261,30 +261,41 @@ border-bottom: rgb(155, 44, 146) 4px solid;
     margin-top: 50px;
     margin-bottom: 50px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border :  rgb(155, 44, 146) 2px solid;
     padding: 10px;
-    border-radius: 30px;
 }
+
 .form-intro {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding-bottom: 20px;
     font-size: 25px;
     font-weight: bold;
+    text-align: center;
+    
 }
+
 .form-input__label {
     display: flex;
     justify-content: flex-start;
     margin : 10px;
 }
+
 .form-input {
     display: flex;
     flex-direction: column;
 }
+
+.form-content {
+    border :  rgb(155, 44, 146) 2px solid;
+    padding: 10px;
+    border-radius: 30px;
+}
+
 Label {
     padding-right : 10px;
     padding-left: 10px;
     padding-bottom : 20px;
 }
+
  input {
     border-radius: 30px;
     border: rgb(155, 44, 146) 1px solid;

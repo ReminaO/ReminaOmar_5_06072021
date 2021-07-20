@@ -28,3 +28,7 @@ const storageClean = (key) => {
 storageClean("orderId");
 storageClean("totalCart");
 storageClean("formValues");
+
+if (orderId == null || totalCart == null) {
+    window.location.href = "index.html";
+}
