@@ -342,6 +342,7 @@ Label {
 }
 
 /*Page validation*/
+
 #order-validation {
     display: flex;
     flex-direction: column;
@@ -380,3 +381,10 @@ font-size: 20px;
 .order-resume span {
     font-weight: bold;
     }
+
+.return-btn {
+    text-decoration: none;
+    color : rgb(155, 44, 146);
+    padding: 20px;
+    font-size: 20px;
+}

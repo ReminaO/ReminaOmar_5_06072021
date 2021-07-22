@@ -100,18 +100,18 @@ const singleTeddy = async () => {
 
         //---Enregistrement de l'Item dans le local Storage
 
-        let products = JSON.parse(localStorage.getItem("products"));
+        let cart = JSON.parse(localStorage.getItem("cart"));
 
         const addStorage = () => {
-            products.push(productSelect);
-            localStorage.setItem(("products"), JSON.stringify(products));
+            cart.push(productSelect);
+            localStorage.setItem(("cart"), JSON.stringify(cart));
         }
 
-        if (products) {
+        if (cart) {
             addStorage();
             popupConfirmation();
         } else {
-            products = [];
+            cart = [];
             addStorage();
             popupConfirmation();
         }
