@@ -1,7 +1,5 @@
 let teddyId = [];
 
-
-
 //---Récupération de l'ID
 
 const idSelect = window.location.search;
@@ -75,7 +73,8 @@ const singleTeddy = async () => {
         const quantitySelect = document.getElementById('quantity-select');
         const formSelect = colorSelect.value;
         const quantityChoice = quantitySelect.value;
-        //---récupreration des valeurs du formulaire
+
+        //---récupreration des valeurs du panier
 
         let productSelect = {
             imageSelect : itemId.imageUrl,

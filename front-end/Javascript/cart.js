@@ -83,11 +83,11 @@ for (let j = 0; j < cartDelete.length; j++) {
 
     })
 }
-//---Vérification du panier avant envoi de la commande
+//---Vérification du panier avant affichage du formulaire et envoi de la commande
 
 if (emptyBasket() == false) {
     
-//---Affichage du formulaire sur la page du panier
+    //---Affichage du formulaire sur la page du panier
     
     const formDisplay = () => {
         const formContainer = document.querySelector("#form-container")
@@ -136,176 +136,152 @@ if (emptyBasket() == false) {
 
     sendBtn.addEventListener("click", (e) => {
         e.preventDefault();
-
-        const contact = {
-            firstName: document.getElementById("first-name").value,
-            lastName: document.getElementById("last-name").value,
-            email: document.getElementById("email").value,
-            address: document.getElementById("address").value,
-            city: document.getElementById("city").value,
-            postalCode: document.getElementById("postal-code").value
+        const getUserData = () => {
+            const contact = {
+                firstName: document.getElementById("first-name").value,
+                lastName: document.getElementById("last-name").value,
+                email: document.getElementById("email").value,
+                address: document.getElementById("address").value,
+                city: document.getElementById("city").value,
+                postalCode: document.getElementById("postal-code").value
+            }
+            return contact;
         }
-
-        //---RegEx pour les champs textes
+        //--------------------------------------------------------------
         
-        const textCheck = (value) => {
-            return /^([A-Za-z]{2,20})?([-]{0,1})?([A-Za-z]{2,20})$/.test(value);
-        };
-
-        //---RegEx pour le champs code postal
-        
-        const postalCheck = (value) => {
-            return /^[0-9]{5}$/.test(value);
-        };
-
-        //---RegEx pour le champs email
-        
-        const emailCheck = (value) => {
-            return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
-        };
-        //---RegEx pour le champs adresse
-        
-        const addressCheck = (value) => {
-            return /^[A-Za-z0-9\s]{5,100}$/.test(value);
-        };
-
-        //---Controle de l'input Prénom
-        
-        const firstNameCheck = () => {
-
-            const theFirstName = contact.firstName;
-
-            if (textCheck(theFirstName)) {
-                return true;
-            } else {
-                alert("les chiffres et symboles ne sont pas acceptés dans le champs Prénom");
-                return false;
-            };
-        };
-
-        //---Controle de l'input Nom
-        
-        const lastNameCheck = () => {
-
-            const theLastName = contact.lastName;
-
-            if (textCheck(theLastName)) {
-                return true;
-            } else {
-                alert("les chiffres et symboles ne sont pas acceptés dans le champs Nom");
-                return false;
-            };
-        };
-
-        //---Controle de l'input Ville
-        
-        const cityCheck = () => {
-
-            const theCity = contact.city;
-
-            if (textCheck(theCity)) {
-                return true;
-            } else {
-                alert("les chiffres et symboles ne sont pas acceptés dans le champs Ville");
-                return false;
-            };
-        };
-
-        //---Controle de l'input Code Postal
-        
-        const postalCodeCheck = () => {
-
-            const thePostalCode = contact.postalCode;
-
-            if (postalCheck(thePostalCode)) {
-                return true;
-            } else {
-                alert("Le code Postal doit être composé de 5 chiffres");
-                return false;
-            };
-        };
-
-        //---Controle de l'input email
-        
-        const mailCheck = () => {
-
-            const theMail = contact.email;
-
-            if (emailCheck(theMail)) {
-                return true;
-            } else {
-                alert("L'email n'est pas valide");
-                return false;
-            };
-        };
-        
-        //---Controle de l'input email
-        
-        const addressesCheck = () => {
-
-            const theAddress = contact.address;
-
-            if (addressCheck(theAddress)) {
-                return true;
-            } else {
-                alert("L'adresse n'est pas valide");
-                return false;
-            };
-        };
-        
-        //---Controle validité du formulaire avant envoie dans le localStorage
-        
-        if (firstNameCheck() && lastNameCheck() && cityCheck() && postalCodeCheck() && mailCheck() && addressesCheck()) {
-            localStorage.setItem("contact", JSON.stringify(contact));
-            localStorage.setItem("totalCart", JSON.stringify(totalCart));
-            
-    //---Mettre les valeurs du formulaires et des produits selectionnés dans un objet a envoyer au serveur
-            
-            const toSend = {
-                products,
-                contact,
-                totalCart,
-            };
-
-    //---Envoie de l'objet vers le serveur
-        
-            const postSend = fetch("http://localhost:3000/api/teddies/order", {
-                method: "POST",
-                body: JSON.stringify(toSend),
-                headers: {
-                    "Content-type": "application/json",
-                },
-            });
-
-            postSend.then(async (response) => {
-                try {
-                    const content = await response.json();
-                    console.log(content);
-
-                    if (response.ok) {
+                //---RegEx pour les champs textes
                 
-                        //---Récupération de l'id dans le local Storage
-
-                        localStorage.setItem("orderId", content._id);
-
-                        //---Redirection vers la page validation
-
-                        window.location.href = "validation.html";
-
-                    } else {
-                        alert(`Réponse du serveur: erreur ${response.status}`)
-                    };
-                
-                    //---Erreur en cas d'echec de la reception du serveur
-
-                } catch (e) {
-                    alert(`Erreur: ${e}`);
+                const textCheck = (value) => {
+                    return /^([A-Za-z]{2,20})?([-]{0,1})?([A-Za-z]{2,20})$/.test(value);
                 };
-            });
+        
+                //---RegEx pour le champs code postal
+                
+                const postalCheck = (value) => {
+                    return /^[0-9]{5}$/.test(value);
+                };
+        
+                //---RegEx pour le champs email
+                
+                const emailCheck = (value) => {
+                    return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
+                };
+                //---RegEx pour le champs adresse
+                
+                const addressCheck = (value) => {
+                    return /^[A-Za-z0-9\s]{5,100}$/.test(value);
+                };
+        
+                //---Contrôle de l'input Prénom
+                
+                const firstNameCheck = () => {
+        
+                    const theFirstName = getUserData.firstName;
+        
+                    if (textCheck(theFirstName)) {
+                        return true;
+                    } else {
+                        alert("les chiffres et symboles ne sont pas acceptés dans le champs Prénom");
+                        return false;
+                    };
+                };
+        
+                //---Contrôle de l'input Nom
+                
+                const lastNameCheck = () => {
+        
+                    const theLastName = getUserData.lastName;
+        
+                    if (textCheck(theLastName)) {
+                        return true;
+                    } else {
+                        alert("les chiffres et symboles ne sont pas acceptés dans le champs Nom");
+                        return false;
+                    };
+                };
+        
+                //---Contrôle de l'input Ville
+                
+                const cityCheck = () => {
+        
+                    const theCity = getUserData.city;
+        
+                    if (textCheck(theCity)) {
+                        return true;
+                    } else {
+                        alert("les chiffres et symboles ne sont pas acceptés dans le champs Ville");
+                        return false;
+                    };
+                };
+        
+                //---Contrôle de l'input Code Postal
+                
+                    const postalCodeCheck = () => {
+        
+                    const thePostalCode = getUserData.postalCode;
+        
+                    if (postalCheck(thePostalCode)) {
+                        return true;
+                    } else {
+                        alert("Le code Postal doit être composé de 5 chiffres");
+                        return false;
+                    };
+                };
+        
+                //---Contrôle de l'input email
+                
+                const mailCheck = () => {
+        
+                    const theMail = getUserData.email;
+        
+                    if (emailCheck(theMail)) {
+                        return true;
+                    } else {
+                        alert("L'email n'est pas valide");
+                        return false;
+                    };
+                };
+                
+                //---Contrôle de l'input email
+                
+                const addressesCheck = () => {
+        
+                    const theAddress = getUserData.address;
+        
+                    if (addressCheck(theAddress)) {
+                        return true;
+                    } else {
+                        alert("L'adresse n'est pas valide");
+                        return false;
+                    };
+                };
+                
+                //---Contrôle validité du formulaire avant envoie dans le localStorage
+            
+        if (firstNameCheck() && lastNameCheck() && cityCheck() && addressesCheck()) {
+                    
+                    localStorage.setItem("totalCart", JSON.stringify(totalCart));
 
-        } else {
-            alert("Merci de compléter correctement le formulaire");
-        };
+                    const createOrder = async () => {
+                        const api = new TeddyApi();
+                        const contact = getUserData();
+                        const products = [];
+                        console.log(products)
+                        for (const product of products) {
+                          for (let i = 0; i < product.quantity; i++) {
+                            products.push(product._id);
+                          }
+                        }
+                        const result = await api.createOrder(contact, products);
+                        localStorage.setItem("createdOrder", JSON.stringify(result));
+                        localStorage.setItem("orderId", JSON.stringify(result.orderId));
+                        document.location.href = "validation.html";
+                        return result;
+                    };
+                    createOrder();
+
+                } else {
+                    alert("Merci de compléter correctement le formulaire");
+                };
     });
-    
-};
+}
