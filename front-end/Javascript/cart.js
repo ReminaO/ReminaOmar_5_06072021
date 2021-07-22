@@ -152,7 +152,7 @@ if (emptyBasket() == false) {
                 //---RegEx pour les champs textes
                 
                 const textCheck = (value) => {
-                    return /^([A-Za-z]{2,20})?([-]{0,1})?([A-Za-z]{2,20})$/.test(value);
+                    return /^([A-Za-z\s]{2,20})?([-]{0,1})?([A-Za-z]{2,20})$/.test(value);
                 };
         
                 //---RegEx pour le champs code postal
@@ -176,12 +176,13 @@ if (emptyBasket() == false) {
                 
                 const firstNameCheck = () => {
         
-                    const theFirstName = getUserData.firstName;
+                    const theFirstName = getUserData().firstName;
         
                     if (textCheck(theFirstName)) {
                         return true;
                     } else {
-                        alert("les chiffres et symboles ne sont pas acceptés dans le champs Prénom");
+                        document.getElementById("first-name").style.background = "red";
+                        alert("les chiffres et symboles ne sont pas acceptés, merci de compléter correctement le champs Prénom");
                         return false;
                     };
                 };
@@ -190,12 +191,13 @@ if (emptyBasket() == false) {
                 
                 const lastNameCheck = () => {
         
-                    const theLastName = getUserData.lastName;
+                    const theLastName = getUserData().lastName;
         
                     if (textCheck(theLastName)) {
                         return true;
                     } else {
-                        alert("les chiffres et symboles ne sont pas acceptés dans le champs Nom");
+                        document.getElementById("last-name").style.background = "red";
+                        alert("les chiffres et symboles ne sont pas acceptés, merci de compléter correctement le champs Nom");
                         return false;
                     };
                 };
@@ -204,12 +206,13 @@ if (emptyBasket() == false) {
                 
                 const cityCheck = () => {
         
-                    const theCity = getUserData.city;
+                    const theCity = getUserData().city;
         
                     if (textCheck(theCity)) {
                         return true;
                     } else {
-                        alert("les chiffres et symboles ne sont pas acceptés dans le champs Ville");
+                        document.getElementById("city").style.background = "red";
+                        alert("les chiffres et symboles ne sont pas acceptés, merci de compléter correctement le champs Ville");
                         return false;
                     };
                 };
@@ -218,11 +221,12 @@ if (emptyBasket() == false) {
                 
                     const postalCodeCheck = () => {
         
-                    const thePostalCode = getUserData.postalCode;
+                    const thePostalCode = getUserData().postalCode;
         
                     if (postalCheck(thePostalCode)) {
                         return true;
                     } else {
+                        document.getElementById("postal-code").style.background = "red"
                         alert("Le code Postal doit être composé de 5 chiffres");
                         return false;
                     };
@@ -232,11 +236,12 @@ if (emptyBasket() == false) {
                 
                 const mailCheck = () => {
         
-                    const theMail = getUserData.email;
+                    const theMail = getUserData().email;
         
                     if (emailCheck(theMail)) {
                         return true;
                     } else {
+                        document.getElementById("email").style.background = "red";
                         alert("L'email n'est pas valide");
                         return false;
                     };
@@ -246,11 +251,12 @@ if (emptyBasket() == false) {
                 
                 const addressesCheck = () => {
         
-                    const theAddress = getUserData.address;
+                    const theAddress = getUserData().address;
         
                     if (addressCheck(theAddress)) {
                         return true;
                     } else {
+                        document.getElementById("address").style.background = "red";
                         alert("L'adresse n'est pas valide");
                         return false;
                     };
@@ -258,30 +264,30 @@ if (emptyBasket() == false) {
                 
                 //---Contrôle validité du formulaire avant envoie dans le localStorage
             
-        if (firstNameCheck() && lastNameCheck() && cityCheck() && addressesCheck()) {
+        if (firstNameCheck() && lastNameCheck() && cityCheck() && addressesCheck() && postalCodeCheck() && mailCheck()) {
                     
-                    localStorage.setItem("totalCart", JSON.stringify(totalCart));
+            localStorage.setItem("totalCart", JSON.stringify(totalCart));
 
-                    const createOrder = async () => {
-                        const api = new TeddyApi();
-                        const contact = getUserData();
-                        const products = [];
-                        console.log(products)
-                        for (const product of products) {
-                          for (let i = 0; i < product.quantity; i++) {
-                            products.push(product._id);
-                          }
-                        }
-                        const result = await api.createOrder(contact, products);
-                        localStorage.setItem("createdOrder", JSON.stringify(result));
-                        localStorage.setItem("orderId", JSON.stringify(result.orderId));
-                        document.location.href = "validation.html";
-                        return result;
-                    };
-                    createOrder();
+            const createOrder = async () => {
+                const api = new TeddyApi();
+                const contact = getUserData();
+                const products = [];
+                console.log(products)
+                for (const product of products) {
+                    for (let i = 0; i < product.quantity; i++) {
+                    products.push(product._id);
+                    }
+                }
+                const result = await api.createOrder(contact, products);
+                localStorage.setItem("createdOrder", JSON.stringify(result));
+                localStorage.setItem("orderId", JSON.stringify(result.orderId));
+                document.location.href = "validation.html";
+                return result;
+            };
+            createOrder();
 
-                } else {
-                    alert("Merci de compléter correctement le formulaire");
-                };
+        } else {
+            alert("Merci de compléter correctement le formulaire");
+        };
     });
 }
