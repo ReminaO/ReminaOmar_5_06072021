@@ -92,8 +92,9 @@ a {
     .card{
         margin-right: 50px;
         margin-bottom: 50px;
+        transition : scale 0.3s;
     }
-    /* Style Page Produit*/
+    
 
     #single-card {
         display: flex;
@@ -108,7 +109,7 @@ a {
         transform: scale(0.98);
         transition: 0.5s;
     }
-
+ /* Style Page Produit*/
     #add-btn {
         border-radius: 30px;
         background: linear-gradient(90deg, rgba(232,77,176,1) 0%, rgba(194,67,218,1) 48%, rgba(255,0,151,1) 100%);
