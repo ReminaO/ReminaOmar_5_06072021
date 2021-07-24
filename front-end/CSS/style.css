@@ -6,22 +6,9 @@
     height: 100%;
     width: 100%;
   }
-  main {
-    min-height: 100%;
-    /* equal to footer height */
-    margin-bottom: -75px; 
-  }
-  main:after {
-    content: "";
-    display: block;
-  }
-  .footer-link, main:after {
-    height: 75px; 
-  }
-
+  
   i {
-      margin: 0;
-      padding: 0;
+     padding-left: 10px;
   }
 
   h1 {
@@ -50,7 +37,6 @@ a {
 
 .footer-link li {
     list-style: none;
-    padding-left:30px;
 }
 
 .footer-link  {
@@ -66,7 +52,7 @@ a {
     color: white;
     font-size: 25px;
     padding-left:30px;
-    padding-bottom: 20px;
+    padding-right:30px;
 }
 
 .social-text{
@@ -74,7 +60,6 @@ a {
     color: white;
     font-size: 25px;
     padding-left:40px;
-    padding-bottom: 20px;
 }
 /*Style page d'accueil*/
 .articles {
