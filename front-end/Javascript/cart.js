@@ -97,7 +97,7 @@ if (emptyBasket() == false) {
             <p class="form-intro">Merci compléter le formulaire de commande<p>
         
             <form action="#" class="form-input">
-                <div class="form-input__label">
+                <div class="form-input__label identity">
                     <label for="first-name">Prenom : </label>
                     <input type="text" id="first-name" name="first-name" required>
             
@@ -105,18 +105,18 @@ if (emptyBasket() == false) {
                     <input type="text" id="last-name" name="last-name" required>
                 </div>
                     
-                <div class="form-input__label">
+                <div class="form-input__label address">
                     <label for="address">Adresse : </label>
                     <textarea id="address" name="address" required></textarea>
                 </div>
-                <div class="form-input__label">
+                <div class="form-input__label city">
                     <label for="postal-code">Code postal : </label>
                     <input type="text" id="postal-code" name="postal-code" required>
                     <label for="city">Ville : </label>
                     <input type="text" id="city" name="city" required>
                 </div>
 
-                <div class="form-input__label">
+                <div class="form-input__label email">
                     <label for="email">E-mail : </label>
                     <input type="email" id="email" name="email" required>
                 </div>

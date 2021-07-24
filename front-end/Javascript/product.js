@@ -30,7 +30,7 @@ const singleTeddy = async () => {
 
     let singleCard =
         `
-            <div class="card single-teddy border-warning shadow col-6 col-xl-6 col-lg-6 col-sm-6 col-md-6">
+            <div class="card text-center single-teddy border-warning shadow col-6 col-xl-6 col-lg-6 col-sm-6 col-md-6">
                 <img class=”card-img-top” src=${itemId.imageUrl} alt="photo de ${itemId.name}>
                 <div class="card-body">
                     <h5 class="card-title" >${itemId.name}</h5>
