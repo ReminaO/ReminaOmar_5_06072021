@@ -18,16 +18,16 @@ const validationContainer = `
 `
 validationPage.innerHTML += validationContainer;
 
-//---Suppression du panier apres commande
+//---Suppression du panier apres commande, a réactiver apres soutenance
 
-const storageClean = (key) => {
-    localStorage.removeItem(key);
-}
-storageClean("orderId");
-storageClean("totalCart");
-storageClean("contact");
-storageClean("cart");
-storageClean("createdOrder");
+// const storageClean = (key) => {
+//     localStorage.removeItem(key);
+// }
+// storageClean("orderId");
+// storageClean("totalCart");
+// storageClean("contact");
+// storageClean("cart");
+// storageClean("createdOrder");
 
 /*if (orderId == null || totalCart == null) {
     window.location.href = "index.html";

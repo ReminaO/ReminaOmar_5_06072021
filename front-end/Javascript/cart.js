@@ -270,6 +270,8 @@ if (emptyBasket() == false) {
                     
             localStorage.setItem("totalCart", JSON.stringify(totalCart));
             
+            //---Envoi des éléments vers le serveur afin d'avoir en retour l'OrderId
+            
             const createOrder = async () => {
                 const api = new TeddyApi();
                 const contact = getUserData();
