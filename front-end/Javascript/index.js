@@ -20,7 +20,7 @@ const teddyDisplay = async () => {
     await fetchTeddy();
     document.getElementById('articles').innerHTML += teddyData.map((teddy) =>
         `
-        <div class="card scale text-center border-warning shadow col-4 col-xl-4 col-lg-4 col-sm-12 col-md-12">
+        <div class="card scale text-center border-warning shadow col-xl-4 col-lg-12 col-sm-12 col-md-12">
             <img class=”card-img-top” src=${teddy.imageUrl} alt="photo de ${teddy.name}>
             <div class="card-body">
                 <h5 class="card-title" >${teddy.name}</h5>

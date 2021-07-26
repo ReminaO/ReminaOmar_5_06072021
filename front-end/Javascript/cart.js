@@ -49,7 +49,7 @@ if  (cart === null || cart == 0) {
         </div>
         <div class="price">${cart[k].priceSelect} €</div>
         <div class="quantity">${cart[k].quantity}</div>
-        <div class="total">${cart[k].quantity * cart[k].priceSelect} € </div>
+        <div class="total">${cart[k].quantity * cart[k].priceSelect} €</div>
         `;
     }
     if (k ===cart.length) {
@@ -271,7 +271,7 @@ if (emptyBasket() == false) {
             localStorage.setItem("totalCart", JSON.stringify(totalCart));
             
             //---Envoi des éléments vers le serveur afin d'avoir en retour l'OrderId
-            
+
             const createOrder = async () => {
                 const api = new TeddyApi();
                 const contact = getUserData();
