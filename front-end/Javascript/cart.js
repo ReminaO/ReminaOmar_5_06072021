@@ -94,7 +94,7 @@ if (emptyBasket() == false) {
         const formContent = `
         
         <div class="form-content">
-            <p class="form-intro">Merci compléter le formulaire de commande<p>
+            <h3 class="form-intro">Merci compléter le formulaire de commande</h3>
         
             <form action="#" class="form-input">
                 <div class="form-input__label identity">

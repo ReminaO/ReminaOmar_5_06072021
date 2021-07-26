@@ -8,7 +8,6 @@ console.log(orderId);
 const validationPage = document.getElementById("order-validation");
 
 const validationContainer = `
-    <h2>Récapitulatif de votre commande</h2>
     <div class="order-resume">
         <p>Merci pour votre commande</p>
         <p>Votre commande numéro <span class="bold">${orderId}</span> a bien été prise en compte.</p>
@@ -17,7 +16,7 @@ const validationContainer = `
     </div>
     <a href="index.html" class="return-btn">Retour à l'accueil</a>
 `
-validationPage.insertAdjacentHTML("afterbegin", validationContainer);
+validationPage.innerHTML += validationContainer;
 
 //---Suppression du panier apres commande
 

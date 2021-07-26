@@ -6,7 +6,7 @@
     height: 100%;
     width: 100%;
   }
-
+ 
   i {
      padding-left: 10px;
   }
@@ -31,6 +31,17 @@ a {
 }
 @media all and (min-width: 1200px) {
     /* Footer*/
+      /*Fixe le footer en bas de page*/
+  body{ 
+    display:flex; 
+    flex-direction:column;
+  }
+
+  footer{
+    margin-top:auto; 
+  }
+  /*----fin ---*/
+
     .footer-link a {
         text-decoration: none;
         color: white;
@@ -247,6 +258,11 @@ a {
         padding: 10px;
     }
 
+
+    #form-container h4 {
+        visibility:hidden;
+    }
+
     .form-intro {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         padding-bottom: 20px;
@@ -258,7 +274,6 @@ a {
 
     .form-input__label {
         display: flex;
-        /* justify-content: flex-start; */
         margin : 10px;
     }
 
@@ -329,6 +344,7 @@ a {
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 90%;
         margin:0 auto;
         margin-top: 100px;
     }
@@ -339,9 +355,9 @@ a {
     }
 
     .order-resume {
-        margin: 15px;
-        max-width: 900px;
+        margin: 50px;
         text-align: center;
+        width: 70%;
         margin:0 auto;
         margin-top: 20px;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -363,6 +379,10 @@ a {
     .order-resume span {
         font-weight: bold;
         }
+
+    .order-resume h2{
+            margin:50px;
+    }
 
     .return-btn {
         text-decoration: none;
@@ -441,6 +461,9 @@ a {
         padding: 10px;
     }
 
+    #form-container h4 {
+        visibility:hidden;
+    }
     .identity {
         display: flex;
         flex-direction: column;
@@ -524,11 +547,6 @@ a {
 
     /*footer*/
 
-    footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
 
     .social {
         display: flex;
@@ -630,6 +648,10 @@ a {
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             padding: 10px;
         }
+
+        #form-container h4 {
+            visibility:hidden;
+        }
     
         .identity {
             display: flex;
@@ -728,11 +750,7 @@ a {
         }
     
         /*footer*/
-        footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+      
         .social {
             display: flex;
             justify-content: center;
@@ -834,6 +852,10 @@ a {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
 
+        #form-container h4 {
+            visibility:hidden;
+        }
+
         .identity {
             display: flex;
             flex-direction: column;
@@ -906,7 +928,7 @@ a {
             margin-top: 100px;
             width: 100%;
         }
-    
+        
         #order-validation h2 {
         color: rgb(155, 44, 146);
     
@@ -947,11 +969,7 @@ a {
     
 
         /*footer*/
-        footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+        
 
         .social {
             display: flex;
@@ -1106,6 +1124,10 @@ a {
         margin-bottom: 50px;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         padding: 10px;
+    }
+
+    #form-container h4 {
+        visibility:hidden;
     }
 
     .form-intro {
