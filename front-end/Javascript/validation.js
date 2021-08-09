@@ -12,7 +12,7 @@ const validationContainer = `
         <p>Merci pour votre commande</p>
         <p>Votre commande numéro <span class="bold">${orderId}</span> a bien été prise en compte.</p>
         <p>Le montant de votre commande est de <span class="bold">${totalCart}€</span>.</p>
-        <p>A bientôt !<p>
+        <p>A bientôt !</p>
     </div>
     <a href="index.html" class="return-btn">Retour à l'accueil</a>
 `
